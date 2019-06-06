@@ -15,9 +15,9 @@ public class House {
 
     private String location;
 
-    private double defPrice;
+    private float defPrice;
 
-    private double unitPrice;
+    private float unitPrice;
 
     private String tags;
 
@@ -79,19 +79,19 @@ public class House {
         this.location = location;
     }
 
-    public double getDefPrice() {
+    public float getDefPrice() {
         return defPrice;
     }
 
-    public void setDefPrice(double defPrice) {
+    public void setDefPrice(float defPrice) {
         this.defPrice = defPrice;
     }
 
-    public double getUnitPrice() {
+    public float getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(double unitPrice) {
+    public void setUnitPrice(float unitPrice) {
         this.unitPrice = unitPrice;
     }
 
