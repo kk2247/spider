@@ -12,4 +12,4 @@ create table tabhouse
     unit_price float        null,
     tags       varchar(30)  null,
     dis        varchar(50)  null
-);
+)  engine = InnoDB default charset = utf8;

@@ -1,26 +1,30 @@
 package com.neu.dataclean.mapper;
-
+import com.neu.dataclean.entity.House;
+import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
+import com.alibaba.fastjson.JSON;
 
 import java.io.IOException;
 
 /**
  * @author Administrator
  */
-public class DataMapper extends Mapper<LongWritable, Text,Text,Text> {
+public class DataMapper extends Mapper<LongWritable, Text, IntWritable,House> {
+    private static int id=0;
+
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+        id++;
         String line=value.toString();
         if(line.trim().equals("")){
             return ;
         }
-        String[] values=line.split("\u0001");
-        if(value.getLength()!=11){
+        House house = JSON.parseObject(line,House.class);
+        if(house==null){
             return ;
         }
-        String id=values[0].trim();
-        context.write(new Text(id),new Text(line));
+        context.write(new IntWritable(id),house);
     }
 }

@@ -1,5 +1,8 @@
 package com.neu.dataclean.reducer;
 
+import com.neu.dataclean.entity.House;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
@@ -9,30 +12,22 @@ import java.io.IOException;
 /**
  * @author Administrator
  */
-public class DataReducer extends Reducer<Text, Text,Text,Text> {
+public class DataReducer extends Reducer<IntWritable, House,House,House> {
     @Override
-    protected void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-        for(Text text:values){
-            String line=text.toString();
-            String[] attributes=line.split("u0001");
-            StringBuilder stringBuilder=new StringBuilder();
-            stringBuilder.append(attributes[1].trim()+"#");
-            stringBuilder.append(attributes[2].trim()+"#");
-            stringBuilder.append(attributes[3].substring(0,attributes[3].length()-1)+"#");
-            String floor = attributes[4].trim();
+    protected void reduce(IntWritable key, Iterable<House> values, Context context) throws IOException, InterruptedException {
+        int id= Integer.parseInt(key.toString());
+        for(House house:values){
+            house.setArea(house.getArea().replace("m²",""));
+            String floor=house.getFloor();
             if(floor.contains("(") && floor.contains(")")){
-                floor=floor.substring(0,1);
-            }else{
-                floor="全";
+                house.setFloor(floor.split("\\(")[0]);
             }
-            stringBuilder.append(floor+"#");
-            stringBuilder.append(attributes[5].trim().replace("年建造","")+"#");
-            stringBuilder.append(attributes[6].trim()+"#");
-            stringBuilder.append(attributes[7].trim()+"#");
-            stringBuilder.append(attributes[8].trim()+"#");
-            stringBuilder.append(attributes[9].trim().replace("[","").replace("]","")+"#");
-            stringBuilder.append(attributes[10].trim());
-            context.write(key,new Text(stringBuilder.toString()));
+            house.setDate(house.getDate().replace("年建造",""));
+            house.setTags(house.getTags().replace("[","").replace("]","")
+                    .replace("\"",""));
+            context.write(house, null);
         }
+
+
     }
 }
