@@ -13,3 +13,11 @@ create table tabhouse
     tags       varchar(30)  null,
     dis        varchar(50)  null
 )  engine = InnoDB default charset = utf8;
+
+create table area_unit_price(
+    id int auto_increment
+         primary key ,
+    dis varchar(50) null ,
+    size int null ,
+    unit_price float null
+)ENGINE=InnoDB default charset = utf8;
