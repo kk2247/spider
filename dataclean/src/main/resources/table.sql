@@ -21,3 +21,10 @@ create table area_unit_price(
     size int null ,
     unit_price float null
 )ENGINE=InnoDB default charset = utf8;
+
+create table tag_area(
+                         id int auto_increment primary key ,
+                         dis varchar(50) null ,
+                         tag varchar(30) null,
+                         number int null
+)ENGINE=InnoDB default charset = utf8;

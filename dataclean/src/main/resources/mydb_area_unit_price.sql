@@ -1,0 +1,12 @@
+INSERT INTO mydb.area_unit_price (id, dis, size, unit_price) VALUES (1, 'dadongqu', 3000, 9081.83);
+INSERT INTO mydb.area_unit_price (id, dis, size, unit_price) VALUES (2, 'hepingqu', 3000, 16348.1);
+INSERT INTO mydb.area_unit_price (id, dis, size, unit_price) VALUES (3, 'huanggu', 3000, 9707.07);
+INSERT INTO mydb.area_unit_price (id, dis, size, unit_price) VALUES (4, 'hunnanxinqu', 3000, 11211.3);
+INSERT INTO mydb.area_unit_price (id, dis, size, unit_price) VALUES (5, 'kangping', 1, 4673);
+INSERT INTO mydb.area_unit_price (id, dis, size, unit_price) VALUES (6, 'liaozhong', 45, 5940.58);
+INSERT INTO mydb.area_unit_price (id, dis, size, unit_price) VALUES (7, 'shenbeixinqu', 3000, 7444.69);
+INSERT INTO mydb.area_unit_price (id, dis, size, unit_price) VALUES (8, 'shenhequ', 3000, 11827.4);
+INSERT INTO mydb.area_unit_price (id, dis, size, unit_price) VALUES (9, 'sujiatun', 3000, 6991.75);
+INSERT INTO mydb.area_unit_price (id, dis, size, unit_price) VALUES (10, 'tiexiqu', 3000, 9931.21);
+INSERT INTO mydb.area_unit_price (id, dis, size, unit_price) VALUES (11, 'xinmin', 30, 6166.27);
+INSERT INTO mydb.area_unit_price (id, dis, size, unit_price) VALUES (12, 'yuhongqu', 3000, 9327.59);

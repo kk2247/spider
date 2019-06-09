@@ -1,10 +1,13 @@
 package com.neu.dataclean.driver;
 
 import com.neu.dataclean.entity.House;
+import com.neu.dataclean.entity.Word;
 import com.neu.dataclean.mapper.DataMapper;
 import com.neu.dataclean.mapper.LocationMapper;
+import com.neu.dataclean.mapper.WordMapper;
 import com.neu.dataclean.reducer.DataReducer;
 import com.neu.dataclean.reducer.LocationReducer;
+import com.neu.dataclean.reducer.WordReducer;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.FloatWritable;
@@ -43,14 +46,14 @@ public class DataDriver {
 
         Job job1=Job.getInstance(conf,"unit price in area");
         job1.setJarByClass(DataDriver.class);
-        job1.setMapperClass(LocationMapper.class);
-        job1.setReducerClass(LocationReducer.class);
+        job1.setMapperClass(WordMapper.class);
+        job1.setReducerClass(WordReducer.class);
         job1.setMapOutputKeyClass(Text.class);
-        job1.setMapOutputValueClass(FloatWritable.class);
+        job1.setMapOutputValueClass(IntWritable.class);
         job1.setOutputFormatClass(DBOutputFormat.class);
 
         job1.addArchiveToClassPath(new Path("lib/mysql-connector-java-5.1.46.jar"));
-        DBOutputFormat.setOutput(job1, "area_unit_price", "dis","size","unit_price");
+        DBOutputFormat.setOutput(job1, "tag_area", "dis","tag","number");
         ControlledJob controlledJob1=new ControlledJob(conf);
         controlledJob1.setJob(job1);
 //        controlledJob1.addDependingJob(controlledJob);
